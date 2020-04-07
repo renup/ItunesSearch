@@ -18,14 +18,14 @@ public enum APIServiceError: Error {
    }
 
 protocol APIRouter {
-    static func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void)
+    func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void)
     
-    static func performRequestForImages(route: APIConfiguration, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionTask?
+    func performRequestForImages(route: APIConfiguration, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionTask?
 }
 
 extension APIRouter {
     
-    private static func getURL(route: APIConfiguration) -> URL? {
+    private func getURL(route: APIConfiguration) -> URL? {
         let path = route.path
         
         guard var urlComponents = URLComponents(string: path) else { return nil }
@@ -35,7 +35,35 @@ extension APIRouter {
         return url
     }
     
-    static func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void) {
+    func performRequestForImages(route: APIConfiguration, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionTask? {
+        
+        guard let url = getURL(route: route) else {
+            completion(.failure(.invalidEndpoint))
+            return nil
+        }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { (result) in
+            switch result {
+            case .success(let (response, data)):
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                guard let img = UIImage(data: data) else {
+                    completion(.failure(.decodeError))
+                    return
+                }
+                completion(.success(img))
+                
+            case .failure:
+                completion(.failure(.apiError))
+            }
+        }
+        dataTask.resume()
+        return dataTask
+    }
+
+    func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void) {
         guard let url = getURL(route: route) else { completion(.failure(.invalidEndpoint)); return }
         
         URLSession.shared.dataTask(with: url) { result in
