@@ -9,7 +9,10 @@
 import Foundation
 
 class AppCoordinator: Coordinator {
+    func start() {
+        
+    }
     
-    let ituesStorage: ItunesStorage
+    
     
 }

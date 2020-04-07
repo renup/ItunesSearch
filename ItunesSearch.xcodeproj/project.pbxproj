@@ -22,6 +22,7 @@
 		5F8249F5243C085E006A64DB /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8249F4243C085E006A64DB /* APIConfiguration.swift */; };
 		5F8249F7243C08D5006A64DB /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8249F6243C08D5006A64DB /* APIRouter.swift */; };
 		5F8249F9243C08FD006A64DB /* ItunesListEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8249F8243C08FD006A64DB /* ItunesListEndPoint.swift */; };
+		A7298F5C243CD8FA00F4070A /* URLSession+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5F8249F4243C085E006A64DB /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		5F8249F6243C08D5006A64DB /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		5F8249F8243C08FD006A64DB /* ItunesListEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesListEndPoint.swift; sourceTree = "<group>"; };
+		A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Utility.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		5F8249B1243BFCF7006A64DB /* ItunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A7298F5A243CD8D300F4070A /* Extensions */,
 				5F8249EF243C0428006A64DB /* Protocols */,
 				5F8249E6243BFF20006A64DB /* Coordinators */,
 				5F8249E5243BFF19006A64DB /* ViewModel */,
@@ -211,6 +214,14 @@
 				5F8249F8243C08FD006A64DB /* ItunesListEndPoint.swift */,
 			);
 			path = EndPoints;
+			sourceTree = "<group>";
+		};
+		A7298F5A243CD8D300F4070A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F8249F1243C04BA006A64DB /* Coordinator.swift in Sources */,
+				A7298F5C243CD8FA00F4070A /* URLSession+Utility.swift in Sources */,
 				5F8249F7243C08D5006A64DB /* APIRouter.swift in Sources */,
 				5F8249EC243BFF77006A64DB /* ItunesViewModel.swift in Sources */,
 				5F8249E8243BFF3D006A64DB /* AppCoordinator.swift in Sources */,
