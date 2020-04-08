@@ -28,6 +28,7 @@
 		A7298F63243D4B5300F4070A /* ItunesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F62243D4B5300F4070A /* ItunesCell.swift */; };
 		A7298F65243D55E600F4070A /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F64243D55E600F4070A /* UITableView+Utility.swift */; };
 		A7298F67243D561300F4070A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F66243D561300F4070A /* ReusableView.swift */; };
+		A7298F69243DF3DB00F4070A /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		A7298F62243D4B5300F4070A /* ItunesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesCell.swift; sourceTree = "<group>"; };
 		A7298F64243D55E600F4070A /* UITableView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
 		A7298F66243D561300F4070A /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 			children = (
 				A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */,
 				A7298F64243D55E600F4070A /* UITableView+Utility.swift */,
+				A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				5F8249E8243BFF3D006A64DB /* AppCoordinator.swift in Sources */,
 				5F8249B7243BFCF7006A64DB /* ItunesListViewController.swift in Sources */,
 				5F8249F5243C085E006A64DB /* APIConfiguration.swift in Sources */,
+				A7298F69243DF3DB00F4070A /* UIView+Utilities.swift in Sources */,
 				A7298F61243CECB600F4070A /* ItunesSearchResponse.swift in Sources */,
 				5F8249B3243BFCF7006A64DB /* AppDelegate.swift in Sources */,
 				5F8249EE243BFF9D006A64DB /* ItunesListView.swift in Sources */,
