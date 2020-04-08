@@ -25,6 +25,9 @@
 		A7298F5C243CD8FA00F4070A /* URLSession+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */; };
 		A7298F5E243CE98E00F4070A /* ItunesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F5D243CE98E00F4070A /* ItunesListRouter.swift */; };
 		A7298F61243CECB600F4070A /* ItunesSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F60243CECB600F4070A /* ItunesSearchResponse.swift */; };
+		A7298F63243D4B5300F4070A /* ItunesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F62243D4B5300F4070A /* ItunesCell.swift */; };
+		A7298F65243D55E600F4070A /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F64243D55E600F4070A /* UITableView+Utility.swift */; };
+		A7298F67243D561300F4070A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F66243D561300F4070A /* ReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Utility.swift"; sourceTree = "<group>"; };
 		A7298F5D243CE98E00F4070A /* ItunesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesListRouter.swift; sourceTree = "<group>"; };
 		A7298F60243CECB600F4070A /* ItunesSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesSearchResponse.swift; sourceTree = "<group>"; };
+		A7298F62243D4B5300F4070A /* ItunesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesCell.swift; sourceTree = "<group>"; };
+		A7298F64243D55E600F4070A /* UITableView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
+		A7298F66243D561300F4070A /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5F8249ED243BFF9D006A64DB /* ItunesListView.swift */,
+				A7298F62243D4B5300F4070A /* ItunesCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +208,7 @@
 			children = (
 				5F8249F0243C04BA006A64DB /* Coordinator.swift */,
 				5F8249F4243C085E006A64DB /* APIConfiguration.swift */,
+				A7298F66243D561300F4070A /* ReusableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */,
+				A7298F64243D55E600F4070A /* UITableView+Utility.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,9 +377,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7298F63243D4B5300F4070A /* ItunesCell.swift in Sources */,
+				A7298F67243D561300F4070A /* ReusableView.swift in Sources */,
 				5F8249F1243C04BA006A64DB /* Coordinator.swift in Sources */,
 				A7298F5C243CD8FA00F4070A /* URLSession+Utility.swift in Sources */,
 				5F8249F7243C08D5006A64DB /* APIRouter.swift in Sources */,
+				A7298F65243D55E600F4070A /* UITableView+Utility.swift in Sources */,
 				5F8249EC243BFF77006A64DB /* ItunesViewModel.swift in Sources */,
 				A7298F5E243CE98E00F4070A /* ItunesListRouter.swift in Sources */,
 				5F8249E8243BFF3D006A64DB /* AppCoordinator.swift in Sources */,

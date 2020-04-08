@@ -9,10 +9,19 @@
 import UIKit
 
 class ItunesListViewController: UIViewController {
+    
+    private lazy var tableView: ItunesListView = {
+        let tableView = ItunesListView()
+        return tableView
+    }()
+    
+    override func loadView() {
+        view = tableView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.reloadData()
     }
 
 
