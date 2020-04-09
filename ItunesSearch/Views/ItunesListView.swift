@@ -11,7 +11,7 @@ import UIKit
 
 final class ItunesListView: UITableView {
     
-    var items: [ItuneItem]? = nil {
+    var items: [ItuneItem] = [] {
         didSet {
             reloadData()
         }
@@ -19,6 +19,7 @@ final class ItunesListView: UITableView {
         
     init() {
         super.init(frame: .zero, style: .plain)
+        backgroundColor = .white
         registerCell()
         delegate = self
         dataSource = self
@@ -39,12 +40,12 @@ extension ItunesListView: UITableViewDelegate {
 
 extension ItunesListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items?.count ?? 0
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeReusableCell(for: indexPath) as ItunesCell
-        cell.dataModel = items?[indexPath.row]
+        cell.configure(items[indexPath.row])
         return cell
     }
     

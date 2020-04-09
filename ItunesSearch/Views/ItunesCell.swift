@@ -19,7 +19,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
         static let cellHeight: CGFloat = 90
     }
     
-    var dataModel: ItuneItem?
+//    var dataModel: ItuneItem?
     private let cache = ImageCache()
 
     let listRouter = ItunesListRouter()
@@ -82,7 +82,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure(_ dataModel: ItuneItem) {
+    func configure(_ dataModel: ItuneItem) {
         artworkView.image = UIImage(named: "song_placeholder")
         downloadImageifNeeded(dataModel.artThumbnailURLString)
         titleLabel.text = dataModel.songTitle
@@ -97,6 +97,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
         subtextLabel.text = nil
         sideLabel.text = nil
         urlSessionTask?.cancel()
+        urlSessionTask = nil
     }
     
 }

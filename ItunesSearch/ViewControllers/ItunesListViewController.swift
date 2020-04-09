@@ -14,16 +14,11 @@ class ItunesListViewController: UIViewController {
         let tableView = ItunesListView()
         return tableView
     }()
-    
-    override func loadView() {
-        view = tableView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view = tableView
+        view = tableView
     }
-
 
 }
 

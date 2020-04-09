@@ -10,17 +10,18 @@ import Foundation
 import UIKit
 
 final class ItunesListCoordinator: Coordinator {
-    let factory = ItunesListFactory()
     let navigationVC: UINavigationController
-    let itunesListVC: ItunesListViewController = ItunesListViewController()
+    var itunesListVC: ItunesListViewController?
     private lazy var viewModel = ItunesViewModel()
     
     init(navVC: UINavigationController) {
         navigationVC = navVC
-        navigationVC.pushViewController(itunesListVC, animated: true)
+        start()
     }
     
     func start() {
+        guard let itunesVC = navigationVC.viewControllers.first as? ItunesListViewController else { assertionFailure(); return }
+        itunesListVC = itunesVC
         beginFlow()
     }
     
@@ -33,10 +34,10 @@ final class ItunesListCoordinator: Coordinator {
             guard let self = self else { return }
             switch result {
             case .success(let items):
-                self.itunesListVC.tableView.items = items
+                self.itunesListVC?.tableView.items = items
             case .failure(let error):
                 if self.viewModel.shouldShowError(error: error) {
-                    self.itunesListVC.showAPIError(error)
+                    self.itunesListVC?.showAPIError(error)
                 }
             }
         }

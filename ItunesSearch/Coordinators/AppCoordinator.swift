@@ -12,23 +12,20 @@ import UIKit
 class AppCoordinator: Coordinator {
     
     let navigationVC: UINavigationController
-    
     var itunesListCoordinator: ItunesListCoordinator?
     
-    init(_ navVC: UINavigationController) {
+    init(navVC: UINavigationController) {
         navigationVC = navVC
     }
     
     func start() {
-        beginItunesListFlow()
+        itunesListCoordinator = ItunesListCoordinator(navVC: navigationVC)
+//        beginItunesListFlow()
     }
     
-    private func beginItunesListFlow() {
-       itunesListCoordinator = ItunesListCoordinator(navVC: navigationVC)
-//        navigationVC.pushViewController(itunesListCoordinator?.itunesListVC ?? UIViewController(), animated: true)
-
-        itunesListCoordinator?.start()
-    }
+//    private func beginItunesListFlow() {
+//        itunesListCoordinator?.start()
+//    }
     
     
     
