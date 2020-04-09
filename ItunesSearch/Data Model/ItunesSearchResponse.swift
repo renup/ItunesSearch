@@ -20,7 +20,7 @@ struct ItuneItem: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case artistName
-        case artThumbnailURLString = "artworkUrl30"
+        case artThumbnailURLString = "artworkUrl60"
         case songTitle = "trackName"
         case albumTitle = "collectionName"
     }

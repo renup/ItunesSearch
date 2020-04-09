@@ -13,10 +13,11 @@ final class ItunesCell: UITableViewCell, ReusableView {
     enum Layout {
         static let high: Float = 1000
         static let mid: Float = 999
-        static let spacing: CGFloat = 16
+        static let spacing: CGFloat = 8
         static let insets = UIEdgeInsets(top: 16, left: 20, bottom: 16, right: 20)
         static let separatorInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        static let cellHeight: CGFloat = 90
+        static let cellHeight: CGFloat = 60
+        static let upperStackToSubTextSpacing: CGFloat = -10
     }
     
 //    var dataModel: ItuneItem?
@@ -38,7 +39,8 @@ final class ItunesCell: UITableViewCell, ReusableView {
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textAlignment = .left
-        label.setContentHuggingPriority(UILayoutPriority.init(rawValue: Layout.mid), for: .horizontal)
+        label.numberOfLines = 0
+        label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         return label
     }()
     
@@ -59,7 +61,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
         label.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         label.numberOfLines = 0
         label.textAlignment = .right
-        label.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(UILayoutPriority.init(rawValue: Layout.mid), for: .horizontal)
         return label
     }()
     
@@ -83,7 +85,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
     }
     
     func configure(_ dataModel: ItuneItem) {
-        artworkView.image = UIImage(named: "song_placeholder")
+        artworkView.image = UIImage(named: "thumbnail_placeholder")
         downloadImageifNeeded(dataModel.artThumbnailURLString)
         titleLabel.text = dataModel.songTitle
         subtextLabel.text = dataModel.albumTitle
@@ -106,7 +108,7 @@ extension ItunesCell {
     private func configureLayout() {
         wrap(view: upperStack, exceptBottom: true, insets: Layout.insets)
         wrap(view: subtextLabel, exceptTop: true, insets: Layout.insets)
-        upperStack.bottomAnchor.constraint(equalTo: subtextLabel.topAnchor).isActive = true
+        upperStack.bottomAnchor.constraint(equalTo: subtextLabel.topAnchor, constant: Layout.upperStackToSubTextSpacing).isActive = true
     }
     
     func downloadImageifNeeded(_ imageURL: String) {
