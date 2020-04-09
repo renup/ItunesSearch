@@ -7,10 +7,27 @@
 //
 
 import Foundation
+import UIKit
 
 class AppCoordinator: Coordinator {
+    
+    let navigationVC: UINavigationController
+    
+    var itunesListCoordinator: ItunesListCoordinator?
+    
+    init(_ navVC: UINavigationController) {
+        navigationVC = navVC
+    }
+    
     func start() {
-        
+        beginItunesListFlow()
+    }
+    
+    private func beginItunesListFlow() {
+       itunesListCoordinator = ItunesListCoordinator(navVC: navigationVC)
+//        navigationVC.pushViewController(itunesListCoordinator?.itunesListVC ?? UIViewController(), animated: true)
+
+        itunesListCoordinator?.start()
     }
     
     

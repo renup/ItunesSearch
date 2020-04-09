@@ -10,7 +10,7 @@ import UIKit
 
 class ItunesListViewController: UIViewController {
     
-    private lazy var tableView: ItunesListView = {
+    lazy var tableView: ItunesListView = {
         let tableView = ItunesListView()
         return tableView
     }()
@@ -21,7 +21,7 @@ class ItunesListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+//        view = tableView
     }
 
 

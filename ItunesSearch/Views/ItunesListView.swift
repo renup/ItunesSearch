@@ -11,6 +11,12 @@ import UIKit
 
 final class ItunesListView: UITableView {
     
+    var items: [ItuneItem]? = nil {
+        didSet {
+            reloadData()
+        }
+    }
+        
     init() {
         super.init(frame: .zero, style: .plain)
         registerCell()
@@ -33,11 +39,13 @@ extension ItunesListView: UITableViewDelegate {
 
 extension ItunesListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeReusableCell(for: indexPath) as ItunesCell
+        cell.dataModel = items?[indexPath.row]
+        return cell
     }
     
     

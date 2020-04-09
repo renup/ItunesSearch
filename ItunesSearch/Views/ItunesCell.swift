@@ -20,7 +20,11 @@ final class ItunesCell: UITableViewCell, ReusableView {
     }
     
     var dataModel: ItuneItem?
-    
+    private let cache = ImageCache()
+
+    let listRouter = ItunesListRouter()
+    var urlSessionTask: URLSessionDataTask?
+
     private(set) lazy var artworkView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .center
@@ -80,6 +84,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
     
     private func configure(_ dataModel: ItuneItem) {
         artworkView.image = UIImage(named: "song_placeholder")
+        downloadImageifNeeded(dataModel.artThumbnailURLString)
         titleLabel.text = dataModel.songTitle
         subtextLabel.text = dataModel.albumTitle
         sideLabel.text = dataModel.artistName
@@ -91,6 +96,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
         titleLabel.text = nil
         subtextLabel.text = nil
         sideLabel.text = nil
+        urlSessionTask?.cancel()
     }
     
 }
@@ -101,4 +107,28 @@ extension ItunesCell {
         wrap(view: subtextLabel, exceptTop: true, insets: Layout.insets)
         upperStack.bottomAnchor.constraint(equalTo: subtextLabel.topAnchor).isActive = true
     }
+    
+    func downloadImageifNeeded(_ imageURL: String) {
+        if let image = cache[imageURL as NSString] {
+            artworkView.image = image
+            return
+        }
+          urlSessionTask = listRouter.fetchImage(imgURLString: imageURL) { (result) in
+               switch result {
+               case .success(let data):
+                   guard let dt = data, let img = UIImage(data: dt) else {
+                        DispatchQueue.main.async {
+                            print(APIServiceError.decodeError.description)
+                       }
+                      return
+                  }
+                    DispatchQueue.main.async {
+                        self.cache[imageURL as NSString] = img
+                        self.artworkView.image = img
+                   }
+               case.failure(let error):
+                print(error.description)
+               }
+           }
+       }
 }

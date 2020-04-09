@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 public enum APIServiceError: Error {
        case apiError
@@ -15,12 +14,28 @@ public enum APIServiceError: Error {
        case invalidResponse
        case noData
        case decodeError
+    
+    var description: String {
+        switch self {
+        case .apiError:
+            return "API failed. Unable to fetch data at this time. Try again in few minutes"
+        case .invalidEndpoint:
+            return "URL passed was incorrect. Please check if URL and parameters are sent correctly"
+        case .invalidResponse:
+            return "Invalid response"
+        case .noData:
+            return "No data received"
+        case .decodeError:
+            return "There was a problem in decoding your model"
+        }
+    }
+    
    }
 
 protocol APIRouter {
     func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void)
     
-    func performRequestForImages(route: APIConfiguration, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionTask?
+    func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask?
 }
 
 extension APIRouter {
@@ -35,7 +50,7 @@ extension APIRouter {
         return url
     }
     
-    func performRequestForImages(route: APIConfiguration, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionTask? {
+    func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask? {
         
         guard let url = getURL(route: route) else {
             completion(.failure(.invalidEndpoint))
@@ -46,17 +61,17 @@ extension APIRouter {
             switch result {
             case .success(let (response, data)):
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
-                    completion(.failure(.invalidResponse))
+                    DispatchQueue.main.async {
+                        completion(.failure(.invalidResponse))
+                    }
                     return
                 }
-                guard let img = UIImage(data: data) else {
-                    completion(.failure(.decodeError))
-                    return
-                }
-                completion(.success(img))
+                completion(.success(data))// avoid converting to image from data in main thread
                 
             case .failure:
-                completion(.failure(.apiError))
+                DispatchQueue.main.async {
+                    completion(.failure(.apiError))
+                }
             }
         }
         dataTask.resume()
@@ -71,17 +86,26 @@ extension APIRouter {
             switch result {
             case .success(let (response, data)):
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
-                    completion(.failure(.invalidResponse))
+                    DispatchQueue.main.async {
+                        completion(.failure(.invalidResponse))
+                    }
                     return
                 }
+                
                 do{
                     let values = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(values))
+                    DispatchQueue.main.async {
+                        completion(.success(values))
+                    }
                 } catch {
-                    completion(.failure(.decodeError))
+                    DispatchQueue.main.async {
+                        completion(.failure(.decodeError))
+                    }
                 }
             case .failure(_):
-                completion(.failure(.apiError))
+                DispatchQueue.main.async {
+                    completion(.failure(.apiError))
+                }
             }
         }.resume()
     }

@@ -13,7 +13,7 @@ enum ItunesListEndpoint: APIConfiguration {
     case itunesArtWork(imageString: String)
     
     struct Constants {
-        static let baseURL = "https://itunes.apple.com"
+        static let baseURL = "https://itunes.apple.com/"
         static let search = "search"
     }
     

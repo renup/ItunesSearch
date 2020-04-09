@@ -29,6 +29,12 @@
 		A7298F65243D55E600F4070A /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F64243D55E600F4070A /* UITableView+Utility.swift */; };
 		A7298F67243D561300F4070A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F66243D561300F4070A /* ReusableView.swift */; };
 		A7298F69243DF3DB00F4070A /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */; };
+		A7298F6C243DFB2000F4070A /* ItunesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F6B243DFB2000F4070A /* ItunesListFactory.swift */; };
+		A7298F6E243E387F00F4070A /* UIViewController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F6D243E387F00F4070A /* UIViewController+Utility.swift */; };
+		A7298F71243E3CB100F4070A /* ItunesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F70243E3CB100F4070A /* ItunesService.swift */; };
+		A7298F73243E9FC300F4070A /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F72243E9FC300F4070A /* UIImage+Utilities.swift */; };
+		A7298F75243EA19800F4070A /* ImageCacheType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F74243EA19800F4070A /* ImageCacheType.swift */; };
+		A7298F78243EA24B00F4070A /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7298F77243EA24B00F4070A /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,12 @@
 		A7298F64243D55E600F4070A /* UITableView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
 		A7298F66243D561300F4070A /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		A7298F6B243DFB2000F4070A /* ItunesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesListFactory.swift; sourceTree = "<group>"; };
+		A7298F6D243E387F00F4070A /* UIViewController+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utility.swift"; sourceTree = "<group>"; };
+		A7298F70243E3CB100F4070A /* ItunesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesService.swift; sourceTree = "<group>"; };
+		A7298F72243E9FC300F4070A /* UIImage+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
+		A7298F74243EA19800F4070A /* ImageCacheType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheType.swift; sourceTree = "<group>"; };
+		A7298F77243EA24B00F4070A /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +139,9 @@
 		5F8249B1243BFCF7006A64DB /* ItunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A7298F76243EA22B00F4070A /* Uitility */,
+				5F8249B2243BFCF7006A64DB /* AppDelegate.swift */,
+				A7298F6A243DFAD800F4070A /* Factories */,
 				A7298F5F243CEC7200F4070A /* Data Model */,
 				A7298F5A243CD8D300F4070A /* Extensions */,
 				5F8249EF243C0428006A64DB /* Protocols */,
@@ -135,7 +150,6 @@
 				5F8249E4243BFF0F006A64DB /* Network */,
 				5F8249E3243BFF03006A64DB /* Views */,
 				5F8249E2243BFEEE006A64DB /* ViewControllers */,
-				5F8249B2243BFCF7006A64DB /* AppDelegate.swift */,
 				5F8249B4243BFCF7006A64DB /* SceneDelegate.swift */,
 				5F8249BB243BFCF9006A64DB /* Assets.xcassets */,
 				5F8249BD243BFCF9006A64DB /* LaunchScreen.storyboard */,
@@ -182,6 +196,7 @@
 		5F8249E4243BFF0F006A64DB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A7298F6F243E3BD200F4070A /* Services */,
 				5F8249F3243C081E006A64DB /* EndPoints */,
 				5F8249F2243C0810006A64DB /* Routers */,
 			);
@@ -211,6 +226,7 @@
 				5F8249F0243C04BA006A64DB /* Coordinator.swift */,
 				5F8249F4243C085E006A64DB /* APIConfiguration.swift */,
 				A7298F66243D561300F4070A /* ReusableView.swift */,
+				A7298F74243EA19800F4070A /* ImageCacheType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -238,6 +254,8 @@
 				A7298F5B243CD8FA00F4070A /* URLSession+Utility.swift */,
 				A7298F64243D55E600F4070A /* UITableView+Utility.swift */,
 				A7298F68243DF3DB00F4070A /* UIView+Utilities.swift */,
+				A7298F6D243E387F00F4070A /* UIViewController+Utility.swift */,
+				A7298F72243E9FC300F4070A /* UIImage+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -248,6 +266,30 @@
 				A7298F60243CECB600F4070A /* ItunesSearchResponse.swift */,
 			);
 			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		A7298F6A243DFAD800F4070A /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				A7298F6B243DFB2000F4070A /* ItunesListFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		A7298F6F243E3BD200F4070A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A7298F70243E3CB100F4070A /* ItunesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A7298F76243EA22B00F4070A /* Uitility */ = {
+			isa = PBXGroup;
+			children = (
+				A7298F77243EA24B00F4070A /* ImageCache.swift */,
+			);
+			path = Uitility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,7 +422,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7298F73243E9FC300F4070A /* UIImage+Utilities.swift in Sources */,
+				A7298F71243E3CB100F4070A /* ItunesService.swift in Sources */,
 				A7298F63243D4B5300F4070A /* ItunesCell.swift in Sources */,
+				A7298F75243EA19800F4070A /* ImageCacheType.swift in Sources */,
+				A7298F6C243DFB2000F4070A /* ItunesListFactory.swift in Sources */,
 				A7298F67243D561300F4070A /* ReusableView.swift in Sources */,
 				5F8249F1243C04BA006A64DB /* Coordinator.swift in Sources */,
 				A7298F5C243CD8FA00F4070A /* URLSession+Utility.swift in Sources */,
@@ -388,11 +434,13 @@
 				A7298F65243D55E600F4070A /* UITableView+Utility.swift in Sources */,
 				5F8249EC243BFF77006A64DB /* ItunesViewModel.swift in Sources */,
 				A7298F5E243CE98E00F4070A /* ItunesListRouter.swift in Sources */,
+				A7298F6E243E387F00F4070A /* UIViewController+Utility.swift in Sources */,
 				5F8249E8243BFF3D006A64DB /* AppCoordinator.swift in Sources */,
 				5F8249B7243BFCF7006A64DB /* ItunesListViewController.swift in Sources */,
 				5F8249F5243C085E006A64DB /* APIConfiguration.swift in Sources */,
 				A7298F69243DF3DB00F4070A /* UIView+Utilities.swift in Sources */,
 				A7298F61243CECB600F4070A /* ItunesSearchResponse.swift in Sources */,
+				A7298F78243EA24B00F4070A /* ImageCache.swift in Sources */,
 				5F8249B3243BFCF7006A64DB /* AppDelegate.swift in Sources */,
 				5F8249EE243BFF9D006A64DB /* ItunesListView.swift in Sources */,
 				5F8249EA243BFF65006A64DB /* ItunesListCoordinator.swift in Sources */,

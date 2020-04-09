@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9EBE3132-E899-40DA-AED4-3ED3B47293E0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E149D5F-6F8D-46A5-A9B3-A8CCF8B8A2FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearch/Extensions/UIViewController+Utility.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "showAPIError(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70872966-2744-4997-89E3-F53E38CBC0F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearch/Network/Routers/APIRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "performRequest(route:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4EE8C0C4-0FCD-48B8-986D-CD19768738BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearch/Network/Routers/APIRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "performRequest(route:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4EE8C0C4-0FCD-48B8-986D-CD19768738BF - 14faf0c2e6772602"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in ItunesSearch):ItunesSearch.APIRouter.performRequest&lt;A where A1: Swift.Decodable&gt;(route: ItunesSearch.APIConfiguration, completion: (Swift.Result&lt;A1, ItunesSearch.APIServiceError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ItunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apunjabi/Documents/iOS%20Projects/ItunesSearch/ItunesSearch/Network/Routers/APIRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "475">
+               </Location>
+               <Location
+                  uuid = "4EE8C0C4-0FCD-48B8-986D-CD19768738BF - 54939a58af055ad4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(__C.NSURLResponse, Foundation.Data), Swift.Error&gt;) -&gt; () in (extension in ItunesSearch):ItunesSearch.APIRouter.performRequest&lt;A where A1: Swift.Decodable&gt;(route: ItunesSearch.APIConfiguration, completion: (Swift.Result&lt;A1, ItunesSearch.APIServiceError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ItunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apunjabi/Documents/iOS%20Projects/ItunesSearch/ItunesSearch/Network/Routers/APIRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "494">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "095BFC30-8DFC-4B2A-AC88-E67356A9C922"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearch/Views/ItunesListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F5F747B-20F4-498C-8113-F1B6B636194D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearch/Views/ItunesListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

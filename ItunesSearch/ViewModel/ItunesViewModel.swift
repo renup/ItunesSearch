@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 final class ItunesViewModel: APIRouter {
+    
     typealias ItunesSearchResult = ItunesSearchResponse
     let listRouter = ItunesListRouter()
+    
+    var itemsReceived: (([ItuneItem]) -> Void) = { _ in }
     
     func getItunesList(_ searchTerm: String, completion: @escaping (Result<[ItuneItem], APIServiceError>) -> Void) {
         listRouter.fetchItunesList(searchTerm: searchTerm) { (result) in
@@ -23,4 +27,11 @@ final class ItunesViewModel: APIRouter {
             }
         }
     }
+    
+    func shouldShowError(error: APIServiceError) -> Bool {
+        guard error == .apiError else {  print(error.description); return false }
+        return true
+    }
+    
 }
+

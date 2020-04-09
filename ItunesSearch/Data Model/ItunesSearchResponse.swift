@@ -14,13 +14,13 @@ struct ItunesSearchResponse: Decodable {
 
 struct ItuneItem: Decodable {
     var artistName: String
-    var artThumbnail: String
+    var artThumbnailURLString: String
     var songTitle: String
     var albumTitle: String
     
     enum CodingKeys: String, CodingKey {
         case artistName
-        case artThumbnail = "artworkUrl30"
+        case artThumbnailURLString = "artworkUrl30"
         case songTitle = "trackName"
         case albumTitle = "collectionName"
     }
