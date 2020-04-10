@@ -27,12 +27,7 @@ extension UIImage {
         return ItunesListRouter.fetchImage(imgURLString: imgURLString) { (result) in
             switch result {
             case .success(let data):
-                guard let dt = data, let img = UIImage(data: dt) else {
-                     DispatchQueue.main.async {
-                         print(APIServiceError.decodeError.description)
-                    }
-                   return
-               }
+                guard let dt = data, let img = UIImage(data: dt) else { return }
                  DispatchQueue.main.async {
                     completion(.success(img))
                 }
