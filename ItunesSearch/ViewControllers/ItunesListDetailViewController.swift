@@ -13,9 +13,13 @@ final class ItunesListDetailViewController: UIViewController {
     
     var item: ItuneItem?
     
+    var detailView: ItuneDetailView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = item?.songTitle
+        guard let item = item else { return }
+        view = ItuneDetailView(item)
     }
     
     

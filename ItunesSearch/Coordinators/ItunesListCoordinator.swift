@@ -14,10 +14,10 @@ final class ItunesListCoordinator: Coordinator {
     var itunesListVC: ItunesListViewController?
     private lazy var viewModel = ItunesViewModel()
     var itunesDetailCoordinator: ItunesDetailCoordinator?
-    
+    var didEnd: () -> Void = { }
+
     init(navVC: UINavigationController) {
         navigationVC = navVC
-        start()
     }
     
     func start() {
@@ -34,9 +34,9 @@ final class ItunesListCoordinator: Coordinator {
     }
     
     private func beginDetailFlow(_ item: ItuneItem) {
-        let detailVC = ItunesListDetailViewController()
-        detailVC.item = item
-        
+        guard let listVC = itunesListVC else { return }
+        let detailCoordinator = ItunesDetailCoordinator(navigationVC, item: item, returnController: listVC)
+        detailCoordinator.start()
     }
     
     func getItunesList(for searchTerm: String = "jack johnson") {

@@ -38,6 +38,9 @@ final class ItunesListView: UITableView {
 
 extension ItunesListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+          tableView.deselectRow(at: indexPath, animated: true)
+        }
         let item = items[indexPath.row]
         didSelectItuneItem(item)
     }

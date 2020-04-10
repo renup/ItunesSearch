@@ -13,8 +13,9 @@ final class ItuneDetailView: UIView {
     
     enum Layout {
         static let spacing: CGFloat = 10
-        static let boldFontSize: CGFloat = 15
-        static let mediumFontSize: CGFloat = 13
+        static let boldFontSize: CGFloat = 20
+        static let mediumFontSize: CGFloat = 15
+        static let insets = UIEdgeInsets(top: 20, left: 20, bottom: 50, right: 20)
     }
     
     private let cache = ImageCache()
@@ -51,14 +52,15 @@ final class ItuneDetailView: UIView {
         stack.alignment = .center
         stack.axis = .vertical
         stack.spacing = Layout.spacing
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     init(_ item: ItuneItem) {
         self.item = item
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: .zero)
+        backgroundColor = .white
         configureLayout()
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -66,7 +68,7 @@ final class ItuneDetailView: UIView {
     }
     
     func configureLayout() {
-        wrap(view: stackView)
+        wrapToSafeArea(stackView, exceptBottom: true, insets: Layout.insets)
     }
     
     func configure() {

@@ -13,6 +13,7 @@ class AppCoordinator: Coordinator {
     
     let navigationVC: UINavigationController
     var itunesListCoordinator: ItunesListCoordinator?
+    var didEnd: () -> Void = {}
     
     init(navVC: UINavigationController) {
         navigationVC = navVC
@@ -20,12 +21,8 @@ class AppCoordinator: Coordinator {
     
     func start() {
         itunesListCoordinator = ItunesListCoordinator(navVC: navigationVC)
-//        beginItunesListFlow()
+        itunesListCoordinator?.start()
     }
-    
-//    private func beginItunesListFlow() {
-//        itunesListCoordinator?.start()
-//    }
     
     
     

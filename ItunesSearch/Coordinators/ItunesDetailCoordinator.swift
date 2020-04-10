@@ -7,11 +7,26 @@
 //
 
 import Foundation
+import UIKit
 
-final class ItunesDetailCoordinator: Coordinator {
+final class ItunesDetailCoordinator: NavigationCoordinator {
+    var navigationController: UINavigationController
+    var returnController: UIViewController?
+    var itemDetailVC: ItunesListDetailViewController?
+    var item: ItuneItem
     
+    var didEnd: () -> Void = { }
+    
+    init(_ navigationVC: UINavigationController, item: ItuneItem, returnController: UIViewController) {
+        self.navigationController = navigationVC
+        self.item = item
+        self.returnController = returnController
+    }
     
     func start() {
-        
+        let detailVC = ItunesListDetailViewController()
+        itemDetailVC = detailVC
+        itemDetailVC?.item = item
+        navigationController.pushViewController(detailVC, animated: true)
     }
 }

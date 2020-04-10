@@ -44,7 +44,28 @@ extension UIView {
         if !exceptRight {
             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right).isActive = true
         }
+    }
+    
+    func wrapToSafeArea(_ view: UIView, exceptTop: Bool = false, exceptLeft: Bool = false, exceptBottom: Bool = false, exceptRight: Bool = false, insets: UIEdgeInsets = .zero) {
+       
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
         
+         if !exceptTop {
+            view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top).isActive = true
+        }
+               
+        if !exceptLeft {
+            view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.left).isActive = true
+        }
+       
+        if !exceptBottom {
+            view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom).isActive = true
+        }
+       
+        if !exceptRight {
+            view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.right).isActive = true
+        }
     }
     
 }
