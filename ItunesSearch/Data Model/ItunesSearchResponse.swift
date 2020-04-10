@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct ItunesSearchResponse: Decodable {
+struct ItunesSearchResponse: Codable {
     var results: [ItuneItem]
 }
 
-struct ItuneItem: Decodable {
+struct ItuneItem: Codable {
     var artistName: String
     var artThumbnailURLString: String
     var artworkURLString: String

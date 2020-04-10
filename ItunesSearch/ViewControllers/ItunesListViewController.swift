@@ -15,15 +15,27 @@ class ItunesListViewController: UIViewController {
         tableView.didSelectItuneItem = { [weak self] item in
             self?.didSelectItem(item)
         }
+        
+        tableView.searching = {[weak self] searchText in
+            self?.filterContent(searchText)
+        }
+        
+        tableView.refreshList = {[weak self] in
+            self?.refreshList()
+        }
         return tableView
     }()
-
+    
     var didSelectItem: (ItuneItem) -> Void = { _ in }
+    var filterContent: (String) -> Void = { _ in }
+    var refreshList: () -> Void = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view = tableView
         title = "Songs List"
+        navigationItem.searchController = tableView.searchController
+        definesPresentationContext = true
     }
 
 }

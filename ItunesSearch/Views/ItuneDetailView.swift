@@ -67,11 +67,11 @@ final class ItuneDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         wrapToSafeArea(stackView, exceptBottom: true, insets: Layout.insets)
     }
     
-    func configure() {
+    private func configure() {
         guard let item = item else { return }
         downloadImageIfNeeded(item.artworkURLString)
         artistLabel.text = item.artistName

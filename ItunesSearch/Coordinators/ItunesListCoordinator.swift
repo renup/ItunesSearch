@@ -26,6 +26,12 @@ final class ItunesListCoordinator: Coordinator {
         itunesListVC?.didSelectItem = {[weak self] item in
             self?.beginDetailFlow(item)
         }
+        itunesListVC?.filterContent = {[weak self] searchText in
+            self?.getItunesList(for: searchText)
+        }
+        itunesListVC?.refreshList = {[weak self] in
+            self?.getItunesList()
+        }
         beginFlow()
     }
     
@@ -39,18 +45,22 @@ final class ItunesListCoordinator: Coordinator {
         detailCoordinator.start()
     }
     
-    func getItunesList(for searchTerm: String = "jack johnson") {
-        viewModel.getItunesList(searchTerm) {[weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let items):
-                self.itunesListVC?.tableView.items = items
-            case .failure(let error):
-                if self.viewModel.shouldShowError(error: error) {
-                    self.itunesListVC?.showAPIError(error)
-                }
-            }
-        }
+    private func getItunesList(for searchTerm: String = "jack johnson") {
+        itunesListVC?.tableView.showActivityIndicator()
+        //TODO: Check if there is response saved in the disk before making this api call. If exists, return saved response if not, continue
+            viewModel.getItunesList(searchTerm) {[weak self] (result) in
+               guard let self = self else { return }
+               switch result {
+               case .success(let items):
+                   self.itunesListVC?.tableView.items = items
+                //TODO: Write to disk
+               case .failure(let error):
+                   if self.viewModel.shouldShowError(error: error) {
+                       self.itunesListVC?.showAPIError(error)
+                   }
+               }
+           }
+        self.itunesListVC?.tableView.hideActivityIndicator()
     }
     
 

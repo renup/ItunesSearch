@@ -16,15 +16,24 @@ final class ItunesListView: UITableView {
             reloadData()
         }
     }
-      
-    var didSelectItuneItem: (ItuneItem) -> Void = { _ in }
+     
+    var activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
+    var didSelectItuneItem: (ItuneItem) -> Void = { _ in }
+    let searchController = UISearchController(searchResultsController: nil)
+    var searching: (String) -> Void = { _ in }
+    var refreshList: () -> Void = { }
+    
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
     init() {
         super.init(frame: .zero, style: .plain)
         backgroundColor = .white
         registerCell()
         delegate = self
         dataSource = self
+        setUpSearch()
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +42,34 @@ final class ItunesListView: UITableView {
     
     private func registerCell() {
         register(ItunesCell.self)
+    }
+    
+    private func setUpSearch() {
+      searchController.searchResultsUpdater = self
+      searchController.obscuresBackgroundDuringPresentation = false
+      searchController.searchBar.placeholder = "Search by artist name"
+   }
+    
+    
+    //MARK: Activity Indicator methods
+      
+    func showActivityIndicator() {
+       activityView.center = self.center
+       addSubview(activityView)
+       activityView.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+       activityView.stopAnimating()
+       activityView.hidesWhenStopped = true
+    }
+    
+    @objc private func filterContentForSearchText(_ searchText: String) {
+        searching(searchText)
+    }
+    
+    func refreshItems() {
+        refreshList()
     }
 }
 
@@ -57,5 +94,18 @@ extension ItunesListView: UITableViewDataSource {
         return cell
     }
     
-    
+}
+
+extension ItunesListView: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let searchText = searchBar.text, searchText.count >= 1 else { return }
+        perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 3.0)
+    }
+}
+
+extension ItunesListView: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        refreshItems()
+    }
 }
