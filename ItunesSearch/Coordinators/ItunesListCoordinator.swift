@@ -46,9 +46,11 @@ final class ItunesListCoordinator: Coordinator {
     }
     
     private func getItunesList(for searchTerm: String = "jack johnson") {
-        itunesListVC?.tableView.showActivityIndicator()
+        itunesListVC?.showActivityIndicator()
+        var searchText = searchTerm
+        if searchTerm.isEmpty { searchText = "jack johnson" }
         //TODO: Check if there is response saved in the disk before making this api call. If exists, return saved response if not, continue
-            viewModel.getItunesList(searchTerm) {[weak self] (result) in
+            viewModel.getItunesList(searchText) {[weak self] (result) in
                guard let self = self else { return }
                switch result {
                case .success(let items):
@@ -60,7 +62,7 @@ final class ItunesListCoordinator: Coordinator {
                    }
                }
            }
-        self.itunesListVC?.tableView.hideActivityIndicator()
+        self.itunesListVC?.hideActivityIndicator()
     }
     
 

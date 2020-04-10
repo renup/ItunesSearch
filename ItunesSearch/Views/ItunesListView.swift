@@ -16,9 +16,7 @@ final class ItunesListView: UITableView {
             reloadData()
         }
     }
-     
-    var activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
-    
+         
     var didSelectItuneItem: (ItuneItem) -> Void = { _ in }
     let searchController = UISearchController(searchResultsController: nil)
     var searching: (String) -> Void = { _ in }
@@ -49,20 +47,6 @@ final class ItunesListView: UITableView {
       searchController.obscuresBackgroundDuringPresentation = false
       searchController.searchBar.placeholder = "Search by artist name"
    }
-    
-    
-    //MARK: Activity Indicator methods
-      
-    func showActivityIndicator() {
-       activityView.center = self.center
-       addSubview(activityView)
-       activityView.startAnimating()
-    }
-
-    func hideActivityIndicator(){
-       activityView.stopAnimating()
-       activityView.hidesWhenStopped = true
-    }
     
     @objc private func filterContentForSearchText(_ searchText: String) {
         searching(searchText)
@@ -99,7 +83,7 @@ extension ItunesListView: UITableViewDataSource {
 extension ItunesListView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        guard let searchText = searchBar.text, searchText.count >= 1 else { return }
+        let searchText = searchBar.text
         perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 3.0)
     }
 }

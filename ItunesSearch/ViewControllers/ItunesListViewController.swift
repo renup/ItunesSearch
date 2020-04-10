@@ -26,6 +26,8 @@ class ItunesListViewController: UIViewController {
         return tableView
     }()
     
+    var activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+
     var didSelectItem: (ItuneItem) -> Void = { _ in }
     var filterContent: (String) -> Void = { _ in }
     var refreshList: () -> Void = {}
@@ -37,6 +39,19 @@ class ItunesListViewController: UIViewController {
         navigationItem.searchController = tableView.searchController
         definesPresentationContext = true
     }
+    
+    //MARK: Activity Indicator methods
+         
+       func showActivityIndicator() {
+        activityView.center = tableView.center
+        tableView.addSubview(activityView)
+        activityView.startAnimating()
+       }
+
+       func hideActivityIndicator(){
+          activityView.stopAnimating()
+          activityView.hidesWhenStopped = true
+       }
 
 }
 
