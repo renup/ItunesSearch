@@ -21,7 +21,8 @@ final class ItunesListView: UITableView {
     let searchController = UISearchController(searchResultsController: nil)
     var searching: (String) -> Void = { _ in }
     var refreshList: () -> Void = { }
-    
+    var activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -55,6 +56,19 @@ final class ItunesListView: UITableView {
     func refreshItems() {
         refreshList()
     }
+    
+    //MARK: Activity Indicator methods
+      
+    func showActivityIndicator() {
+     activityView.center = self.center
+     addSubview(activityView)
+     activityView.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+       activityView.stopAnimating()
+       activityView.hidesWhenStopped = true
+    }
 }
 
 extension ItunesListView: UITableViewDelegate {
@@ -84,6 +98,7 @@ extension ItunesListView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let searchText = searchBar.text
+        showActivityIndicator()
         perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 3.0)
     }
 }

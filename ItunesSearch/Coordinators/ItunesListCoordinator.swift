@@ -46,7 +46,6 @@ final class ItunesListCoordinator: Coordinator {
     }
     
     private func getItunesList(for searchTerm: String = "jack johnson") {
-        itunesListVC?.showActivityIndicator()
         var searchText = searchTerm
         if searchTerm.isEmpty { searchText = "jack johnson" }
         //TODO: Check if there is response saved in the disk before making this api call. If exists, return saved response if not, continue
@@ -61,8 +60,8 @@ final class ItunesListCoordinator: Coordinator {
                        self.itunesListVC?.showAPIError(error)
                    }
                }
+                self.itunesListVC?.tableView.hideActivityIndicator()
            }
-        self.itunesListVC?.hideActivityIndicator()
     }
     
 
