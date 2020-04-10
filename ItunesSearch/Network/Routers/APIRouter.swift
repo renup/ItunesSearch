@@ -33,14 +33,14 @@ public enum APIServiceError: Error {
    }
 
 protocol APIRouter {
-    func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void)
+    static func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void)
     
-    func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask?
+    static func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask?
 }
 
 extension APIRouter {
     
-    private func getURL(route: APIConfiguration) -> URL? {
+    static private func getURL(route: APIConfiguration) -> URL? {
         let path = route.path
         
         guard var urlComponents = URLComponents(string: path) else { return nil }
@@ -50,7 +50,7 @@ extension APIRouter {
         return url
     }
     
-    func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask? {
+    static func performRequestForImage(route: APIConfiguration, completion: @escaping (Result<Data?, APIServiceError>) -> Void) -> URLSessionDataTask? {
         
         guard let url = getURL(route: route) else {
             completion(.failure(.invalidEndpoint))
@@ -78,7 +78,7 @@ extension APIRouter {
         return dataTask
     }
 
-    func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void) {
+    static func performRequest<T: Decodable>(route: APIConfiguration, completion: @escaping (Result<T, APIServiceError>) -> Void) {
         guard let url = getURL(route: route) else { completion(.failure(.invalidEndpoint)); return }
         
         URLSession.shared.dataTask(with: url) { result in

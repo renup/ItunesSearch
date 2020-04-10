@@ -20,10 +20,8 @@ final class ItunesCell: UITableViewCell, ReusableView {
         static let upperStackToSubTextSpacing: CGFloat = -10
     }
     
-//    var dataModel: ItuneItem?
     private let cache = ImageCache()
 
-    let listRouter = ItunesListRouter()
     var urlSessionTask: URLSessionDataTask?
 
     private(set) lazy var artworkView: UIImageView = {
@@ -86,7 +84,7 @@ final class ItunesCell: UITableViewCell, ReusableView {
     
     func configure(_ dataModel: ItuneItem) {
         artworkView.image = UIImage(named: "thumbnail_placeholder")
-        downloadImageifNeeded(dataModel.artThumbnailURLString)
+        downloadImageIfNeeded(dataModel.artThumbnailURLString)
         titleLabel.text = dataModel.songTitle
         subtextLabel.text = dataModel.albumTitle
         sideLabel.text = dataModel.artistName
@@ -111,27 +109,20 @@ extension ItunesCell {
         upperStack.bottomAnchor.constraint(equalTo: subtextLabel.topAnchor, constant: Layout.upperStackToSubTextSpacing).isActive = true
     }
     
-    func downloadImageifNeeded(_ imageURL: String) {
+    func downloadImageIfNeeded(_ imageURL: String) {
         if let image = cache[imageURL as NSString] {
             artworkView.image = image
-            return
+        } else {
+            urlSessionTask = UIImage.loadImage(imageURL) {[weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let img):
+                    self.cache[imageURL as NSString] = img
+                    self.artworkView.image = img
+                case .failure(let error):
+                    print(error.description)
+                }
+            }
         }
-          urlSessionTask = listRouter.fetchImage(imgURLString: imageURL) { (result) in
-               switch result {
-               case .success(let data):
-                   guard let dt = data, let img = UIImage(data: dt) else {
-                        DispatchQueue.main.async {
-                            print(APIServiceError.decodeError.description)
-                       }
-                      return
-                  }
-                    DispatchQueue.main.async {
-                        self.cache[imageURL as NSString] = img
-                        self.artworkView.image = img
-                   }
-               case.failure(let error):
-                print(error.description)
-               }
-           }
        }
 }

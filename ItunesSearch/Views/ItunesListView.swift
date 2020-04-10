@@ -16,7 +16,9 @@ final class ItunesListView: UITableView {
             reloadData()
         }
     }
-        
+      
+    var didSelectItuneItem: (ItuneItem) -> Void = { _ in }
+    
     init() {
         super.init(frame: .zero, style: .plain)
         backgroundColor = .white
@@ -35,7 +37,10 @@ final class ItunesListView: UITableView {
 }
 
 extension ItunesListView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        didSelectItuneItem(item)
+    }
 }
 
 extension ItunesListView: UITableViewDataSource {

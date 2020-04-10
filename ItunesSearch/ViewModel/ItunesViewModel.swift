@@ -12,12 +12,11 @@ import UIKit
 final class ItunesViewModel: APIRouter {
     
     typealias ItunesSearchResult = ItunesSearchResponse
-    let listRouter = ItunesListRouter()
     
     var itemsReceived: (([ItuneItem]) -> Void) = { _ in }
     
     func getItunesList(_ searchTerm: String, completion: @escaping (Result<[ItuneItem], APIServiceError>) -> Void) {
-        listRouter.fetchItunesList(searchTerm: searchTerm) { (result) in
+        ItunesListRouter.fetchItunesList(searchTerm: searchTerm) { (result) in
             switch result {
             case .success(let response):
                 let items = response.results

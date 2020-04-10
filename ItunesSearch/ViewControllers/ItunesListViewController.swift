@@ -12,9 +12,14 @@ class ItunesListViewController: UIViewController {
     
     lazy var tableView: ItunesListView = {
         let tableView = ItunesListView()
+        tableView.didSelectItuneItem = { [weak self] item in
+            self?.didSelectItem(item)
+        }
         return tableView
     }()
 
+    var didSelectItem: (ItuneItem) -> Void = { _ in }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view = tableView

@@ -13,6 +13,7 @@ final class ItunesListCoordinator: Coordinator {
     let navigationVC: UINavigationController
     var itunesListVC: ItunesListViewController?
     private lazy var viewModel = ItunesViewModel()
+    var itunesDetailCoordinator: ItunesDetailCoordinator?
     
     init(navVC: UINavigationController) {
         navigationVC = navVC
@@ -22,11 +23,20 @@ final class ItunesListCoordinator: Coordinator {
     func start() {
         guard let itunesVC = navigationVC.viewControllers.first as? ItunesListViewController else { assertionFailure(); return }
         itunesListVC = itunesVC
+        itunesListVC?.didSelectItem = {[weak self] item in
+            self?.beginDetailFlow(item)
+        }
         beginFlow()
     }
     
     private func beginFlow() {
         getItunesList()
+    }
+    
+    private func beginDetailFlow(_ item: ItuneItem) {
+        let detailVC = ItunesListDetailViewController()
+        detailVC.item = item
+        
     }
     
     func getItunesList(for searchTerm: String = "jack johnson") {

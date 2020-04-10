@@ -10,6 +10,7 @@ import Foundation
 
 final class ItunesDetailCoordinator: Coordinator {
     
+    
     func start() {
         
     }

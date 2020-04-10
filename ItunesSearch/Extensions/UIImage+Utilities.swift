@@ -21,4 +21,25 @@ extension UIImage {
         guard let decodedImage = context?.makeImage() else { return self }
         return UIImage(cgImage: decodedImage)
     }
+    
+    static func loadImage(_ imgURLString: String, completion: @escaping (Result<UIImage?, APIServiceError>) -> Void) -> URLSessionDataTask? {
+        
+        return ItunesListRouter.fetchImage(imgURLString: imgURLString) { (result) in
+            switch result {
+            case .success(let data):
+                guard let dt = data, let img = UIImage(data: dt) else {
+                     DispatchQueue.main.async {
+                         print(APIServiceError.decodeError.description)
+                    }
+                   return
+               }
+                 DispatchQueue.main.async {
+                    completion(.success(img))
+                }
+            case.failure(let error):
+             print(error.description)
+            }
+        }
+    }
+    
 }

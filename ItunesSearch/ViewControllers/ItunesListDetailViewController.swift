@@ -15,6 +15,7 @@ final class ItunesListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = item?.songTitle
     }
     
     
