@@ -74,19 +74,20 @@ final class ItuneDetailView: UIView {
     private func configure() {
         guard let item = item else { return }
         downloadImageIfNeeded(item.artworkURLString)
-        artistLabel.text = item.artistName
-        albumLabel.text = item.albumTitle
+        artistLabel.text = item.artistName ?? "Missing artist name"
+        albumLabel.text = item.albumTitle ?? "Missing album title"
     }
     
-    func downloadImageIfNeeded(_ imageURL: String) {
-           if let image = cache[imageURL as NSString] {
+    func downloadImageIfNeeded(_ imageURL: String?) {
+        guard let imageStr = imageURL else { return }
+           if let image = cache[imageStr as NSString] {
                imageView.image = image
            } else {
-               urlSessionTask = UIImage.loadImage(imageURL) {[weak self] (result) in
+               urlSessionTask = UIImage.loadImage(imageStr) {[weak self] (result) in
                    guard let self = self else { return }
                    switch result {
                    case .success(let img):
-                       self.cache[imageURL as NSString] = img
+                       self.cache[imageStr as NSString] = img
                        self.imageView.image = img
                    case .failure(let error):
                        print(error.description)

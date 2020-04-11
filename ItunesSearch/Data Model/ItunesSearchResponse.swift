@@ -13,11 +13,11 @@ struct ItunesSearchResponse: Codable {
 }
 
 struct ItuneItem: Codable {
-    var artistName: String
-    var artThumbnailURLString: String
-    var artworkURLString: String
-    var songTitle: String
-    var albumTitle: String
+    var artistName: String?
+    var artThumbnailURLString: String?
+    var artworkURLString: String?
+    var songTitle: String?
+    var albumTitle: String?
     
     enum CodingKeys: String, CodingKey {
         case artistName

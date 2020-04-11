@@ -38,7 +38,10 @@ class ItunesListViewController: UIViewController {
         definesPresentationContext = true
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.searchController.dismiss(animated: false, completion: nil)
+    }
 
 }
 

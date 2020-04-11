@@ -85,9 +85,9 @@ final class ItunesCell: UITableViewCell, ReusableView {
     func configure(_ dataModel: ItuneItem) {
         artworkView.image = UIImage(named: "thumbnail_placeholder")
         downloadImageIfNeeded(dataModel.artThumbnailURLString)
-        titleLabel.text = dataModel.songTitle
-        subtextLabel.text = dataModel.albumTitle
-        sideLabel.text = dataModel.artistName
+        titleLabel.text = dataModel.songTitle ?? "Missing song title"
+        subtextLabel.text = dataModel.albumTitle ?? "Missing album title"
+        sideLabel.text = dataModel.artistName ?? "Missing artist name"
     }
     
     override func prepareForReuse() {
@@ -109,15 +109,17 @@ extension ItunesCell {
         upperStack.bottomAnchor.constraint(equalTo: subtextLabel.topAnchor, constant: Layout.upperStackToSubTextSpacing).isActive = true
     }
     
-    func downloadImageIfNeeded(_ imageURL: String) {
-        if let image = cache[imageURL as NSString] {
+    func downloadImageIfNeeded(_ imageURL: String?) {
+        guard let imageStr = imageURL else { return }
+        
+        if let image = cache[imageStr as NSString] {
             artworkView.image = image
         } else {
-            urlSessionTask = UIImage.loadImage(imageURL) {[weak self] (result) in
+            urlSessionTask = UIImage.loadImage(imageStr) {[weak self] (result) in
                 guard let self = self else { return }
                 switch result {
                 case .success(let img):
-                    self.cache[imageURL as NSString] = img
+                    self.cache[imageStr as NSString] = img
                     self.artworkView.image = img
                 case .failure(let error):
                     print(error.description)
