@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class ItunesListCoordinator: Coordinator {
+class ItunesListCoordinator: Coordinator {
     let navigationVC: UINavigationController
     var itunesListVC: ItunesListViewController?
     private lazy var viewModel = ItunesViewModel()
@@ -21,7 +21,7 @@ final class ItunesListCoordinator: Coordinator {
     }
     
     func start() {
-        guard let itunesVC = navigationVC.viewControllers.first as? ItunesListViewController else { assertionFailure(); return }
+        guard let itunesVC = navigationVC.viewControllers.first as? ItunesListViewController else { return }
         itunesListVC = itunesVC
         itunesListVC?.didSelectItem = {[weak self] item in
             self?.beginDetailFlow(item)
@@ -45,7 +45,7 @@ final class ItunesListCoordinator: Coordinator {
         detailCoordinator.start()
     }
     
-    private func getItunesList(for searchTerm: String = "jack johnson") {
+    func getItunesList(for searchTerm: String = "jack johnson") {
         var searchText = searchTerm
         if searchTerm.isEmpty { searchText = "jack johnson" }
         //TODO: Check if there is response saved in the disk before making this api call. If exists, return saved response if not, continue
@@ -63,6 +63,22 @@ final class ItunesListCoordinator: Coordinator {
                 self.itunesListVC?.tableView.hideActivityIndicator()
            }
     }
-    
 
+}
+
+//unit testing purposes
+extension ItunesListCoordinator {
+    
+    func triggerDidSelectItem() {
+        let item = ItuneItem(artistName: "Renu", artThumbnailURLString: "www.https//google.com/thumbnail", artworkURLString: "www.https//google.com/artwork", songTitle: "Jack and Jill", albumTitle: "Nursery Rhymes")
+        itunesListVC?.tableView.didSelectItuneItem(item)
+    }
+    
+    func triggerFilterContent() {
+        itunesListVC?.filterContent("J")
+    }
+    
+    func triggerRefreshList() {
+        itunesListVC?.refreshList()
+    }
 }

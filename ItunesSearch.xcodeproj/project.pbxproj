@@ -37,6 +37,12 @@
 		A79BE072243F88D500BECFDC /* ItunesListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE071243F88D500BECFDC /* ItunesListDetailViewController.swift */; };
 		A79BE074243F89F200BECFDC /* ItuneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE073243F89F200BECFDC /* ItuneDetailView.swift */; };
 		A79BE076243F903300BECFDC /* ItunesDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE075243F903300BECFDC /* ItunesDetailCoordinator.swift */; };
+		A79BE07C2440E97A00BECFDC /* jack johnson.json in Resources */ = {isa = PBXBuildFile; fileRef = A79BE07B2440E97A00BECFDC /* jack johnson.json */; };
+		A79BE07F2441347000BECFDC /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE07E2441347000BECFDC /* AppCoordinatorTests.swift */; };
+		A79BE0812441376900BECFDC /* ItunesListCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE0802441376900BECFDC /* ItunesListCoordinatorTests.swift */; };
+		A79BE084244141ED00BECFDC /* JsonKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE083244141ED00BECFDC /* JsonKit.swift */; };
+		A79BE08624417A2300BECFDC /* XCTestCase+UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE08524417A2300BECFDC /* XCTestCase+UIHelpers.swift */; };
+		A79BE08A244201D600BECFDC /* itunesResultsForJ.json in Resources */ = {isa = PBXBuildFile; fileRef = A79BE089244201D600BECFDC /* itunesResultsForJ.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,12 @@
 		A79BE071243F88D500BECFDC /* ItunesListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesListDetailViewController.swift; sourceTree = "<group>"; };
 		A79BE073243F89F200BECFDC /* ItuneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItuneDetailView.swift; sourceTree = "<group>"; };
 		A79BE075243F903300BECFDC /* ItunesDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesDetailCoordinator.swift; sourceTree = "<group>"; };
+		A79BE07B2440E97A00BECFDC /* jack johnson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "jack johnson.json"; sourceTree = "<group>"; };
+		A79BE07E2441347000BECFDC /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		A79BE0802441376900BECFDC /* ItunesListCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesListCoordinatorTests.swift; sourceTree = "<group>"; };
+		A79BE083244141ED00BECFDC /* JsonKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonKit.swift; sourceTree = "<group>"; };
+		A79BE08524417A2300BECFDC /* XCTestCase+UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+UIHelpers.swift"; sourceTree = "<group>"; };
+		A79BE089244201D600BECFDC /* itunesResultsForJ.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itunesResultsForJ.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +167,8 @@
 				5F8249E3243BFF03006A64DB /* Views */,
 				5F8249E2243BFEEE006A64DB /* ViewControllers */,
 				5F8249BB243BFCF9006A64DB /* Assets.xcassets */,
+				A79BE089244201D600BECFDC /* itunesResultsForJ.json */,
+				A79BE07B2440E97A00BECFDC /* jack johnson.json */,
 				5F8249BD243BFCF9006A64DB /* LaunchScreen.storyboard */,
 				5F8249C0243BFCF9006A64DB /* Info.plist */,
 			);
@@ -164,6 +178,8 @@
 		5F8249C8243BFCF9006A64DB /* ItunesSearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				A79BE0822441392F00BECFDC /* TestingTools */,
+				A79BE07D244133BC00BECFDC /* Coordinators */,
 				5F8249C9243BFCF9006A64DB /* ItunesSearchTests.swift */,
 				5F8249CB243BFCF9006A64DB /* Info.plist */,
 			);
@@ -290,6 +306,24 @@
 			path = Uitility;
 			sourceTree = "<group>";
 		};
+		A79BE07D244133BC00BECFDC /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				A79BE07E2441347000BECFDC /* AppCoordinatorTests.swift */,
+				A79BE0802441376900BECFDC /* ItunesListCoordinatorTests.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		A79BE0822441392F00BECFDC /* TestingTools */ = {
+			isa = PBXGroup;
+			children = (
+				A79BE083244141ED00BECFDC /* JsonKit.swift */,
+				A79BE08524417A2300BECFDC /* XCTestCase+UIHelpers.swift */,
+			);
+			path = TestingTools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,7 +429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F8249BF243BFCF9006A64DB /* LaunchScreen.storyboard in Resources */,
+				A79BE08A244201D600BECFDC /* itunesResultsForJ.json in Resources */,
 				5F8249BC243BFCF9006A64DB /* Assets.xcassets in Resources */,
+				A79BE07C2440E97A00BECFDC /* jack johnson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +489,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79BE07F2441347000BECFDC /* AppCoordinatorTests.swift in Sources */,
 				5F8249CA243BFCF9006A64DB /* ItunesSearchTests.swift in Sources */,
+				A79BE084244141ED00BECFDC /* JsonKit.swift in Sources */,
+				A79BE08624417A2300BECFDC /* XCTestCase+UIHelpers.swift in Sources */,
+				A79BE0812441376900BECFDC /* ItunesListCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
