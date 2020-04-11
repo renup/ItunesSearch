@@ -43,6 +43,7 @@
 		A79BE084244141ED00BECFDC /* JsonKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE083244141ED00BECFDC /* JsonKit.swift */; };
 		A79BE08624417A2300BECFDC /* XCTestCase+UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE08524417A2300BECFDC /* XCTestCase+UIHelpers.swift */; };
 		A79BE08A244201D600BECFDC /* itunesResultsForJ.json in Resources */ = {isa = PBXBuildFile; fileRef = A79BE089244201D600BECFDC /* itunesResultsForJ.json */; };
+		A79BE08C244204A900BECFDC /* ItunesDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BE08B244204A900BECFDC /* ItunesDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		A79BE083244141ED00BECFDC /* JsonKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonKit.swift; sourceTree = "<group>"; };
 		A79BE08524417A2300BECFDC /* XCTestCase+UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+UIHelpers.swift"; sourceTree = "<group>"; };
 		A79BE089244201D600BECFDC /* itunesResultsForJ.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itunesResultsForJ.json; sourceTree = "<group>"; };
+		A79BE08B244204A900BECFDC /* ItunesDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 			children = (
 				A79BE07E2441347000BECFDC /* AppCoordinatorTests.swift */,
 				A79BE0802441376900BECFDC /* ItunesListCoordinatorTests.swift */,
+				A79BE08B244204A900BECFDC /* ItunesDetailCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				A79BE084244141ED00BECFDC /* JsonKit.swift in Sources */,
 				A79BE08624417A2300BECFDC /* XCTestCase+UIHelpers.swift in Sources */,
 				A79BE0812441376900BECFDC /* ItunesListCoordinatorTests.swift in Sources */,
+				A79BE08C244204A900BECFDC /* ItunesDetailCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

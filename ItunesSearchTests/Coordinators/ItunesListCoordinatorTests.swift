@@ -11,30 +11,18 @@ import XCTest
 
 class ItunesListCoordinatorTests: XCTestCase {
     
-    var itunesCoordinator: ItunesListCoordinator!
     var coordinatorSpy: ItunesCoordinatorSpy!
 
     override func setUpWithError() throws {
-        itunesCoordinator = ItunesListCoordinator(navVC: UINavigationController())
-        itunesCoordinator.start()
         let navigationVC = UINavigationController(rootViewController: ItunesListViewController())
         coordinatorSpy = ItunesCoordinatorSpy(navVC: navigationVC)
         coordinatorSpy.start()
     }
 
     override func tearDownWithError() throws {
-        itunesCoordinator = nil
         coordinatorSpy = nil
     }
     
-    func test_ituesListCoordinator_start_initiates_itunesListViewController() {
-        XCTAssertNotNil(itunesCoordinator.itunesListVC)
-    }
-
-}
-
-// Testing action methods on itunesListVC
-extension ItunesListCoordinatorTests {
     func test_trigger_didSelectItem_initiates_detailVC() {
            coordinatorSpy.triggerDidSelectItem()
            waitForNextRunLoop() //we've enabled the animation to be true for navigation.. so we wait for a bit until the animation completes
