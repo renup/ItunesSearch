@@ -91,10 +91,7 @@ extension APIRouter {
                     }
                     return
                 }
-                #if DEBUG
-                let outputStr  = String(data: data, encoding: String.Encoding.utf8)
-                print("outputStr = \(String(describing: outputStr))")
-                #endif
+            
                 do {
                     let values = try JSONDecoder().decode(T.self, from: data)
                     DispatchQueue.main.async {

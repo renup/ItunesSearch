@@ -16,9 +16,7 @@ final class ItunesListView: UITableView {
             reloadData()
         }
     }
-         
-    lazy var workItem = WorkItem()
-
+        
     var didSelectItuneItem: (ItuneItem) -> Void = { _ in }
     let searchController = UISearchController(searchResultsController: nil)
     var searching: (String) -> Void = { _ in }
@@ -46,8 +44,7 @@ final class ItunesListView: UITableView {
     }
     
     private func setUpSearch() {
-        searchController.searchBar.delegate = self
-//      searchController.searchResultsUpdater = self
+      searchController.searchBar.delegate = self
       searchController.obscuresBackgroundDuringPresentation = false
       searchController.searchBar.placeholder = "Search by artist name"
    }
@@ -97,20 +94,6 @@ extension ItunesListView: UITableViewDataSource {
     
 }
 
-//extension ItunesListView: UISearchResultsUpdating {
-//
-//    func updateSearchResults(for searchController: UISearchController) {
-//        let searchBar = searchController.searchBar
-//        let searchText = searchBar.text
-////        showActivityIndicator()
-////        perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 3.0)
-//        workItem.perform(after: 0.5) { [weak self] in
-//            self?.showActivityIndicator()
-//            self?.filterContentForSearchText(searchText ?? "")
-//        }
-//    }
-//}
-
 extension ItunesListView: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         refreshItems()
@@ -119,31 +102,7 @@ extension ItunesListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        // to limit network activity, reload half a second after last key press.
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(filterContentForSearchText), object: nil)
-        perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 0.5)
+        perform(#selector(filterContentForSearchText), with: searchText, afterDelay: 1.0)
     }
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        // 0.5 == half second
-//        workItem.perform(after: 0.5) {
-//            self.showActivityIndicator()
-//            self.filterContentForSearchText(searchText)
-//        }
-//    }
-}
 
-class WorkItem {
-
-private var pendingRequestWorkItem: DispatchWorkItem?
-
-func perform(after: TimeInterval, _ block: @escaping () -> Void) {
-    // Cancel the currently pending item
-    pendingRequestWorkItem?.cancel()
-
-    // Wrap our request in a work item
-    let requestWorkItem = DispatchWorkItem(block: block)
-
-    pendingRequestWorkItem = requestWorkItem
-
-    DispatchQueue.main.asyncAfter(deadline: .now() + after, execute: requestWorkItem)
-}
 }
