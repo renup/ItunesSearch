@@ -49,6 +49,8 @@ class ItunesListCoordinator: Coordinator {
         var searchText = searchTerm
         if searchTerm.isEmpty { searchText = "jack johnson" }
         //TODO: Check if there is response saved in the disk before making this api call. If exists, return saved response if not, continue
+        self.itunesListVC?.tableView.showActivityIndicator()
+
             viewModel.getItunesList(searchText) {[weak self] (result) in
                guard let self = self else { return }
                switch result {

@@ -10,14 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-//    var window: UIWindow?
-//    var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        let navigationVC = UINavigationController()
-//        window?.rootViewController = navigationVC
-//        appCoordinator = AppCoordinator(navVC: navigationVC)
-//        appCoordinator?.start()
         return true
     }
 
